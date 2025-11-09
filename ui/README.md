@@ -1,35 +1,20 @@
-# Code in React 19
+# 💬 Real-Time Chat App with Socket.IO
 
-As React 19 is new, this scaffolding project is for everyone who wants to start coding in React 19.
+A simple real-time chat application built with **React** on the client and **Node.js + Socket.IO** on the server.
 
-It has:
+---
 
-- Vite
-- React 19.2(Stable Version)
-- TailwindCSS 4.x
+## ⚙️ Client-Side Socket Connection
 
-## Create Your Own React 19 Project with Vite and TailwindCSS
-There are multiple ways you can utilize this repository to create your own project. The most straightforward way is by using the follwoing command from the command prompt/terminal:
+```javascript
+// client/src/socket.js
+import io from "socket.io-client";
 
-```bash
-npx degit atapas/code-in-react-19#main <YOUR_PROJECT_NAME>
+const socket = io.connect("http://localhost:5000"); // replace with your server URL
+export default socket;
 ```
 
-This will clone the repository to your project. Alternatively, you can fork this repo or create a new repo from the template by clicking on the button at the top-right corner.
+cd server
+npm install express socket.io cors
 
-## 🫶 Support
-Liked it? You can show your support with a STAR(⭐).
-
-> Many Thanks to all the `Stargazers` who have supported this project with stars(⭐)
-
-### Sponsor My Work
-
-> I am an independent educator and open-source enthusiast who creates meaningful projects to teach programming on my YouTube Channel. You can support my work by [sponsoring me on GitHub](https://github.com/sponsors/atapas).
-
-## Run it Locally
-
-- Clone or fork the repo
-- Install dependencies using `npm install` or `yarn install`
-- Run it using `npm run dev` or `yarn dev`
-
-The app will be available on `http://localhost:5173` by default.
+npm start
