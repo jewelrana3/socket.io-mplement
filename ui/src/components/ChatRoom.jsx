@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, use } from "react";
 import io from "socket.io-client";
 import PropTypes from "prop-types";
 const socket = io.connect("http://localhost:3001");
@@ -9,6 +9,19 @@ function ChatRoom({ username, room }) {
   const [typingMsg, setTypingMsg] = useState("");
 
   const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    if (messages.length > 0) {
+      localStorage.setItem(username, JSON.stringify(messages));
+    }
+  }, [messages, username]);
+
+  useEffect(() => {
+    const storedMessages = localStorage.getItem(username);
+    if (storedMessages) {
+      setMessages(JSON.parse(storedMessages));
+    }
+  }, [username]);
 
   useEffect(() => {
     socket.emit("join_room", room);
