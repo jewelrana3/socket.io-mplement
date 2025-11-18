@@ -5,6 +5,7 @@ function App() {
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
   const [joined, setJoined] = useState(false);
+  console.log("ddd");
 
   const handleJoinRoom = () => {
     if (username && room) {
